@@ -16,14 +16,6 @@ class Data:
         return self.no_of_signup_days
 
 
-class Book:
-    def __init__(self, score):
-        self.score = score
-
-    def get_score(self):
-        return self.score
-
-
 class Library:
     def __init__(self, no_of_books, set_of_books, prepare_time, daily_scan_cap):
         self.no_of_books = no_of_books
@@ -82,9 +74,28 @@ def read_file(filepath):
         return Data(no_of_diff_books, libraries, no_of_signup_days)
 
 
-def main():
+def output(libraries):
+    f = open("output/output_file.txt", "w+")
+    f.write(str(len(libraries)))
+    f.write("\n")
+    for i, library in enumerate(libraries):
+        f.write(str(i) + " " + str(library.get_no_of_books()) + "\n")
+        for j, book in enumerate(library.get_set_of_books()):
+            if j == len(library.get_set_of_books()) - 1:
+                f.write(str(book[0]))
+            else:
+                f.write(str(book[0]) + " ")
+        f.write("\n")
+
+
+def get_data():
     data = read_file('data/a_example.txt')
+    return data
+
+    # libraries = data.get_libraries()
+    # print(libraries)
+    # output(libraries)
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     get_data()
