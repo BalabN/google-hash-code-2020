@@ -3,8 +3,8 @@ def read(fname):
         content = f.readline().split("\n")
         B, L, D = (int(x) for x in content[0].split(" "))
         book_scores = [int(b) for b in f.readline().split(" ")]
-        print(B, L, D)
-        print(book_scores)
+        # print(B, L, D)
+        # print(book_scores)
         libraries = []
         for j in range(L):
             n_j, t_j, m_j = [int(x) for x in f.readline().split(" ")]

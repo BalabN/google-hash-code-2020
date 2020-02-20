@@ -5,12 +5,16 @@ from hashio import read, write
 
 
 def first(book_scores, libraries):
-    libs = sorted(libraries, key=lambda x: x["t_j"])
-    return [{
-        "Y": i,
-        "K": len(x["books"]),
-        "books": sorted(x["books"], key= lambda x: book_scores[x])
-    } for i, x in enumerate(libs)]
+    libs = sorted(enumerate(libraries), key=lambda x: x[1]["t_j"])
+    output = []
+    for i, x in libs:
+        out = {
+            "Y": i,
+            "K": len(x["books"]),
+            "books": sorted(x["books"], key= lambda x: book_scores[x], )
+        }
+        output.append(out)
+    return output
 
 
 if __name__ == '__main__':
