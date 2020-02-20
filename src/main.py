@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import json
 from hashio import read, write
+from scoreLibery import ScoreLibery
 
 
 def first(book_scores, libraries):
@@ -39,5 +40,10 @@ if __name__ == '__main__':
         #         ]
         #     }
         # ]
+        ScoreLibery(book_scores, libraries)
         output = first(book_scores, libraries)
         write(f"data/output/{fname}", output)
+
+
+
+
