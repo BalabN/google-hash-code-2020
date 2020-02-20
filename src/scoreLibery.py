@@ -4,6 +4,7 @@ import numpy as np
 def ScoreLibery(bookScores,libery):
 
     all_books =[]
+    libery_score=[]
 
     for i, eachLibery in enumerate(libery):
         all_books.extend(eachLibery["books"])
@@ -48,8 +49,15 @@ def ScoreLibery(bookScores,libery):
         liberyScore=booksScore+(booksScore/(eachLibery["t_j"]+(eachLibery["m_j"]/numberOfBooks)))
 
         libery[i]["score"]=round(liberyScore,2)
-        libery[i]["score"] = round((np.sum(libery[i]["books_diversity"])/numberOfBooks), 2)
+        libery[i]["score"] = round((np.sum(libery[i]["books_diversity"])/len(libery[i]["books_diversity"])), 2)
+        libery_score.append(libery[i]["score"])
 
- 
+    avarage_score=np.average(libery_score)
+
+    for i, eachLibery in enumerate(libery):
+        j2 = [x for x in libery[i]["books_diversity"] if x >= avarage_score]
+        libery[i]["score"] = round((np.sum(j2)/len(j2)), 2)
+
     return libery
 
+#od sredene vrednosti vseh srednih vrednosti...
