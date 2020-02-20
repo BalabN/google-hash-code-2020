@@ -12,7 +12,7 @@ def first(book_scores, libraries):
         out = {
             "Y": i,
             "K": len(x["books"]),
-            "books": sorted(x["books"], key= lambda x: book_scores[x], )
+            "books": sorted(x["books"], key= lambda x: book_scores[x], reverse=True)
         }
         output.append(out)
     return output
