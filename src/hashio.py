@@ -18,5 +18,11 @@ def read(fname):
     return B, L, D, book_scores, libraries
 
 
-def write(data):
-    pass
+def write(fname, data):
+    with open(fname, "w") as f:
+        f.write(f"{len(data)}\n")
+        for library in data:
+            f.write(f"{library['Y']} {library['K']}\n")
+            for x in library["books"]:
+                f.write(f"{x} ")
+            f.write(f"\n")
