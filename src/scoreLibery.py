@@ -2,7 +2,7 @@ import numpy as np
 
 
 def ScoreLibery(bookScores,libery):
-    print(libery)
+ 
     for i,eachLibery in enumerate(libery):
         sumeScore=0
         bookScore=[]
@@ -31,7 +31,7 @@ def ScoreLibery(bookScores,libery):
 
         libery[i]["score"]=round(liberyScore,2)
 
-    print(libery)
-    return libery
+    libery = sorted(libery, key=lambda k: k['score'], reverse=True)
 
+    return libery
 
