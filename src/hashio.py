@@ -15,7 +15,7 @@ def read(fname):
                 "m_j": m_j,
                 "books": book_ids
             })
-    return B, L, D, libraries
+    return B, L, D, book_scores, libraries
 
 
 def write(data):
