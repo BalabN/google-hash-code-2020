@@ -83,8 +83,7 @@ def read_file(filepath):
 
 
 def main():
-    filepath = 'C://Users//Damir//Downloads//a_example.txt'
-    data = read_file(filepath)
+    data = read_file('data/a_example.txt')
 
 
 if __name__ == "__main__":
