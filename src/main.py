@@ -5,8 +5,12 @@ from hashio import read, write
 from scoreLibery import ScoreLibery
 from scores import score_libs1
 
+
 def first(book_scores, libraries):
-    libs = sorted(enumerate(libraries), key=lambda x: x[1]["simple_score_1"])
+    utez1, utez2 = 0.9, 0.1
+    max_score1 = max(libraries, key=lambda x: x["simple_score_1"])["simple_score_1"]
+    max_score2 = max(libraries, key=lambda x: x["score"])["score"]
+    libs = sorted(enumerate(libraries), key=lambda x: utez1 * x[1]["simple_score_1"]/max_score1 + utez2 * 1/x[1]["score"]/max_score2)
     output = []
     for i, x in libs:
         out = {
@@ -44,7 +48,7 @@ if __name__ == '__main__':
         #         ]
         #     }
         # ]
-        # libraries = ScoreLibery(book_scores, libraries)
-        libraries = score_libs1(book_scores, libraries)
+        libraries = ScoreLibery(book_scores, libraries)
+        libraries = filter_libs(book_scores, libraries)
         output = first(book_scores, libraries)
         write(f"data/output/{fname}", output)
