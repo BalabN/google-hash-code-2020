@@ -3,10 +3,10 @@ import pandas as pd
 import json
 from hashio import read, write
 from scoreLibery import ScoreLibery
-
+from scores import score_libs1
 
 def first(book_scores, libraries):
-    libs = sorted(enumerate(libraries), key=lambda x: x[1]["score"])
+    libs = sorted(enumerate(libraries), key=lambda x: x[1]["simple_score_1"])
     output = []
     for i, x in libs:
         out = {
@@ -44,6 +44,7 @@ if __name__ == '__main__':
         #         ]
         #     }
         # ]
-        libraries = ScoreLibery(book_scores, libraries)
+        # libraries = ScoreLibery(book_scores, libraries)
+        libraries = score_libs1(book_scores, libraries)
         output = first(book_scores, libraries)
         write(f"data/output/{fname}", output)
