@@ -7,16 +7,16 @@ from scores import filter_libs
 
 
 def first(book_scores, libraries):
-    utez1, utez2 = 0.9, 0.1
+    utez1, utez2 = 0.7, 0.3
     max_score1 = max(libraries, key=lambda x: x["simple_score_1"])["simple_score_1"]
-    # max_score2 = max(libraries, key=lambda x: x["score"])["score"]
-    libs = sorted(enumerate(libraries), key=lambda x: utez1 * x[1]["simple_score_1"]/max_score1)  # + utez2 * 1/x[1]["score"]/max_score2)
+    max_score2 = max(libraries, key=lambda x: x["score"])["score"]
+    libs = sorted(enumerate(libraries), key=lambda x: utez1 * x[1]["simple_score_1"]/max_score1 + utez2 * x[1]["score"]/max_score2)
     output = []
     for i, x in libs:
         out = {
             "Y": x["Y"],
             "K": len(x["books"]),
-            "books": sorted(x["books"], key= lambda x: book_scores[x], reverse=True)
+            "books": sorted(x["books"], key=lambda x: book_scores[x], reverse=True)
         }
         output.append(out)
     return output
