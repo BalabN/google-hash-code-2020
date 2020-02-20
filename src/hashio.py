@@ -9,7 +9,7 @@ def read(fname):
         # print(B, L, D)
         # print(book_scores)
         libraries = []
-        for j in range(L):
+        for i, j in enumerate(range(L)):
             n_j, t_j, m_j = [int(x) for x in f.readline().split(" ")]
             book_ids = [int(x) for x in f.readline().split(" ")]
             lib_book_scores = [book_scores[x] for x in book_ids]
@@ -19,7 +19,8 @@ def read(fname):
                 "m_j": m_j,  # can be shipped from lib
                 "books": book_ids,
                 "book_scores": lib_book_scores,
-                "simple_score_1": t_j * m_j * mean(lib_book_scores)
+                "simple_score_1": t_j * m_j * mean(lib_book_scores),
+                "Y": i
             })
     return B, L, D, book_scores, libraries
 

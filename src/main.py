@@ -14,7 +14,7 @@ def first(book_scores, libraries):
     output = []
     for i, x in libs:
         out = {
-            "Y": i,
+            "Y": x["Y"],
             "K": len(x["books"]),
             "books": sorted(x["books"], key= lambda x: book_scores[x], reverse=True)
         }
