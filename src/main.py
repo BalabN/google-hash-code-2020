@@ -6,7 +6,7 @@ from scoreLibery import ScoreLibery
 
 
 def first(book_scores, libraries):
-    libs = sorted(enumerate(libraries), key=lambda x: x[1]["t_j"])
+    libs = sorted(enumerate(libraries), key=lambda x: x[1]["score"])
     output = []
     for i, x in libs:
         out = {
@@ -44,11 +44,6 @@ if __name__ == '__main__':
         #         ]
         #     }
         # ]
-        ScoreLibery(book_scores, libraries)
+        libraries = ScoreLibery(book_scores, libraries)
         output = first(book_scores, libraries)
         write(f"data/output/{fname}", output)
-        break
-
-
-
-
