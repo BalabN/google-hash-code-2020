@@ -29,6 +29,7 @@ if __name__ == '__main__':
         'f_libraries_of_the_world.txt'
     ]
     for fname in fnames:
+        print(fname)
         B, L, D, book_scores, libraries = read(f"data/input/{fname}")
         # print("B =", B)
         # print("L = ", L)
