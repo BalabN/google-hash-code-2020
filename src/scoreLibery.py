@@ -2,24 +2,27 @@ import numpy as np
 
 
 def ScoreLibery(bookScores,libery):
+    print(libery)
     for i,eachLibery in enumerate(libery):
         sumeScore=0
-        BookScore=[]
-
-        for eachBook in eachLibery["books"]:
+        bookScore=[]
+        tmp1=[]
+        tmp2=[]
+        books = eachLibery["books"]
+        for eachBook in books:
             sumeScore=sumeScore+bookScores[eachBook]
-            BookScore.append(bookScores[eachBook])
+            bookScore.append(bookScores[eachBook])
 
-       # print(BookScore)
-       # arr1inds = np.argsort(BookScore)
-       # sorted_arr1=np.take_along_axis(BookScore, arr1inds, axis=0)
-       # print(sorted_arr1)
-       # sorted_arr1 = BookScore[arr1inds[::-1]]
-       # sorted_arr2 = eachLibery["books"][arr1inds[::-1]]
 
-       # print(sorted_arr1,sorted_arr2)
+        sortedIndex = np.argsort(bookScore)
+        sortedIndex = sortedIndex[::-1]
+        for x in sortedIndex:
+            tmp1.append(bookScore[x])
+            tmp2.append(books[x])
 
-        libery[i]["booksScore"] = BookScore
+
+        libery[i]["booksScore"] = tmp1
+        libery[i]["books"] = tmp2
 
         numberOfBooks=len(eachLibery["books"])
         booksScore = numberOfBooks * sumeScore
@@ -28,6 +31,7 @@ def ScoreLibery(bookScores,libery):
 
         libery[i]["score"]=round(liberyScore,2)
 
+    print(libery)
     return libery
 
 
