@@ -50,6 +50,7 @@ if __name__ == '__main__':
         #     }
         # ]
         libraries = ScoreLibery(book_scores, libraries)
-        libraries = filter_libs(book_scores, libraries)
+        # libraries = filter_libs(book_scores, libraries)
+        # libraries = filter_libs(book_scores, libraries)
         output = first(book_scores, libraries)
         write(f"data/output/{fname}", output)
